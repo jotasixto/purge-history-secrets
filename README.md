@@ -19,7 +19,7 @@ Please follow the official installation guide for **jq** from [here](https://jql
 1. Clone this repository:
 
 ```bash
-git clone <repository-url> ~/.oh-my-zsh/custom/plugins/purge-history-secrets
+git clone https://github.com/jotasixto/purge-history-secrets.git ~/.oh-my-zsh/custom/plugins/purge-history-secrets
 ```
 
 2. Add the plugin to the list of plugins in your `~/.zshrc`:
