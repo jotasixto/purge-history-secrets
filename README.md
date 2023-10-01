@@ -1,14 +1,14 @@
 # Zsh History Purge Secrets Plugin
-This zsh plugin helps ensure that secrets do not persist in your zsh history. It checks the `.zsh_history` file every 60 seconds for potential secrets using `trivy`. If any are found, the respective lines are purged from the history and logged.
+This zsh plugin helps ensure that secrets do not persist in your zsh history. It checks the `.zsh_history` file every 60 seconds for potential secrets using `Gitleaks`. If any are found, the respective lines are purged from the history and logged.
 
 ## Prerequisites
 
-1. Trivy: This tool is used to scan the zsh history for potential secrets.
+1. Gitleaks: This tool is used to scan the zsh history for potential secrets.
 2. jq: A lightweight and flexible command-line JSON processor.
 
-### Installing Trivy
+### Installing Gitleaks
 
-Please follow the official installation guide for **Trivy** from [here](https://aquasecurity.github.io/trivy/v0.45/getting-started/installation/).
+Please follow the official installation guide for **Gitleaks** from [here](https://github.com/gitleaks/gitleaks).
 
 ### Installing jq
 
@@ -38,6 +38,6 @@ source ~/.zshrc
 
 Once the plugin is enabled:
 
-1. Every 60 seconds, the plugin checks the `.zsh_history` file for potential secrets using **Trivy**.
+1. Every 60 seconds, the plugin checks the `.zsh_history` file for potential secrets using **Gitleaks**.
 2. If potential secrets are detected, the respective lines are deleted from the `.zsh_history` file.
 3. A log of all purged lines is maintained in `~/.purge-secrets-zshhistory.log`, with timestamps indicating when each line was purged.
