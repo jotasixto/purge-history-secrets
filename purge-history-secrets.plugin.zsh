@@ -10,6 +10,7 @@ function check_history_lines() {
 
         # Check if jq had an error or if line_numbers_array is empty
         if [[ $? -ne 0 || ${#line_numbers_array[@]} -eq 0 ]]; then
+            sleep 60
             continue
         fi
         
