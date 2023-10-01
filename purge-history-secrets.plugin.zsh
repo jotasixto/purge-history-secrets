@@ -10,7 +10,7 @@ function check_history_lines() {
 
         # Check if jq had an error or if line_numbers_array is empty
         if [[ $? -ne 0 || ${#line_numbers_array[@]} -eq 0 ]]; then
-            sleep 60
+            sleep $((60 + RANDOM % 31))
             continue
         fi
         
@@ -34,7 +34,7 @@ function check_history_lines() {
             echo "$(date '+%Y-%m-%d %H:%M:%S') - $number line purged from history" >> ~/.purge-secrets-zshhistory.log
         done
 
-        sleep 60
+        sleep $((60 + RANDOM % 31))
     done
 }
 
