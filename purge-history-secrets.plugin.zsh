@@ -1,12 +1,13 @@
 # This function checks the number of lines in the .zsh_history file
 function check_history_lines() {
     while true; do
-        local json_trivy=$(trivy fs -f json --scanners secret ~/.zsh_history 2>/dev/null)
+        gitleaks detect --no-git --log-level fatal -f json --no-color --no-banner --redact --source ~/.zsh_history -r ~/.report_gitleaks.json
 
         # Parse the JSON to extract line numbers into an array
         local -a line_numbers_array
-        line_numbers_array=($(printf "%s\n" "$json_trivy" | jq 'if .Results then .Results[].Secrets[].Code.Lines[].Number else empty end'))
+        line_numbers_array=($(cat ~/.report_gitleaks.json | jq '.[].StartLine'))
 
+        rm -rf ~/.report_gitleaks.json
 
         # Check if jq had an error or if line_numbers_array is empty
         if [[ $? -ne 0 || ${#line_numbers_array[@]} -eq 0 ]]; then
